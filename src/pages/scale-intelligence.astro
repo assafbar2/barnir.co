@@ -1,0 +1,53 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Scale Intelligence — AI Stack | Assaf Barnir"
+  description="AI tools, technical infrastructure, developer output. The AI Stack vertical."
+  ogTitle="Scale Intelligence — AI Stack"
+  ogDescription="Agent Switchboard, GitHub, The AI Upgrade. AI infrastructure that compounds."
+  ogImage="/og/scale-intelligence.png"
+>
+  <section class="hero" style="min-height: 60vh;">
+    <p class="hero-eyebrow">02 / AI Stack</p>
+    <h1 class="hero-headline">Scale Intelligence.</h1>
+    <p class="hero-sub">
+      AI tools, technical infrastructure, developer output.
+      The machinery that makes thinking leverage-able.
+    </p>
+  </section>
+
+  <section class="section" style="padding-top: 0;">
+    <p class="section-label">Tools</p>
+    <div class="signal-grid">
+      <a href="https://agentswitchboard.dev" class="signal-card" target="_blank" rel="noopener noreferrer"
+         onclick="if(window.plausible)plausible('external_link',{props:{target:'agentswitchboard.dev'}})">
+        <span class="signal-type">Tool</span>
+        <h3 class="signal-title">Agent Switchboard</h3>
+        <p class="signal-desc">Route and orchestrate AI agents at scale. Multi-agent routing with context persistence — route AI agents like you route customer tickets.</p>
+        <span class="signal-link">agentswitchboard.dev →</span>
+      </a>
+      <a href="https://github.com/assafbarnir" class="signal-card" target="_blank" rel="noopener noreferrer"
+         onclick="if(window.plausible)plausible('external_link',{props:{target:'github'}})">
+        <span class="signal-type">Code</span>
+        <h3 class="signal-title">GitHub</h3>
+        <p class="signal-desc">13+ projects shipped. Open source, experiments, and the things that didn't make it to a product page yet.</p>
+        <span class="signal-link">github.com/assafbarnir →</span>
+      </a>
+      <a href="https://barnir.substack.com/s/the-ai-upgrade" class="signal-card" target="_blank" rel="noopener noreferrer">
+        <span class="signal-type">Writing</span>
+        <h3 class="signal-title">The AI Upgrade</h3>
+        <p class="signal-desc">AI tools and technology for people who want to actually use them. Substack section — links to specific tools, workflows, evaluations.</p>
+        <span class="signal-link">Subscribe →</span>
+      </a>
+    </div>
+
+    <div style="margin-top: 64px; text-align: center;">
+      <a href="/work-with-me" class="btn-primary"
+         onclick="if(window.plausible)plausible('cta_click',{props:{location:'scale-intelligence'}})">
+        Work with me
+      </a>
+    </div>
+  </section>
+</Layout>

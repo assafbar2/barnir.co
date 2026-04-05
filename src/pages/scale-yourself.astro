@@ -1,0 +1,65 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Scale Yourself — Human OS | Assaf Barnir"
+  description="Wellness tools, mental models, emotional intelligence. The Human OS vertical."
+  ogTitle="Scale Yourself — Human OS"
+  ogDescription="Vessel, Nuudge, Gram-Reaper, Emotions Soup, Beyond the Rules."
+  ogImage="/og/scale-yourself.png"
+>
+  <section class="hero" style="min-height: 60vh;">
+    <p class="hero-eyebrow">01 / Human OS</p>
+    <h1 class="hero-headline">Scale Yourself.</h1>
+    <p class="hero-sub">
+      Wellness tools, mental models, emotional intelligence.
+      The software that runs underneath everything else.
+    </p>
+  </section>
+
+  <section class="section" style="padding-top: 0;">
+    <p class="section-label">Apps</p>
+    <div class="signal-grid">
+      <div class="signal-card">
+        <span class="signal-type">App</span>
+        <h3 class="signal-title">Vessel</h3>
+        <p class="signal-desc">Wellness tracking for your Human OS. Habits, energy, recovery — the inputs that run the OS.</p>
+      </div>
+      <a href="https://nuudge.app" class="signal-card" target="_blank" rel="noopener noreferrer">
+        <span class="signal-type">App</span>
+        <h3 class="signal-title">Nuudge</h3>
+        <p class="signal-desc">Behavioral nudge system. Identity in progress — feature present, details coming.</p>
+        <span class="signal-link">nuudge.app →</span>
+      </a>
+      <div class="signal-card">
+        <span class="signal-type">App</span>
+        <h3 class="signal-title">Gram-Reaper</h3>
+        <p class="signal-desc">Habit elimination tool. Kill the patterns that cost you performance.</p>
+      </div>
+    </div>
+
+    <div style="margin-top: 64px;">
+      <p class="section-label">Books</p>
+      <div class="signal-grid">
+        <div class="signal-card">
+          <span class="signal-type">Book</span>
+          <h3 class="signal-title">Emotions Soup</h3>
+          <p class="signal-desc">Making sense of the feelings that run your decisions. Before you can scale anything else, you need to understand the system doing the scaling.</p>
+        </div>
+        <div class="signal-card">
+          <span class="signal-type">Book</span>
+          <h3 class="signal-title">Beyond the Rules</h3>
+          <p class="signal-desc">Mental models for people who stopped following the script. The OS update for independent thinkers.</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top: 64px; text-align: center;">
+      <a href="/work-with-me" class="btn-primary"
+         onclick="if(window.plausible)plausible('cta_click',{props:{location:'scale-yourself'}})">
+        Work with me
+      </a>
+    </div>
+  </section>
+</Layout>

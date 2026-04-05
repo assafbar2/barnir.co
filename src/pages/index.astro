@@ -1,0 +1,207 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CLI from '../components/CLI';
+import { whatsNew } from '../data/whats-new';
+
+const CONTACT = 'mailto:assafbar@gmail.com,barnir@agentmail.to?subject=Let%27s%20work%20together';
+---
+
+<Layout>
+  <!-- ── Hero ─────────────────────────────────────── -->
+  <section class="hero">
+    <p class="hero-eyebrow">Unscared OS</p>
+
+    <h1 class="hero-headline">
+      Don't adapt to AI.<br />Architect for it.
+    </h1>
+
+    <p class="hero-sub">
+      Unscared OS equips humans with AI infrastructure, human wellness tools,
+      and mental models so they can lead alongside AI — without fear.
+    </p>
+
+    <!-- Equation -->
+    <div class="hero-equation" aria-label="performance = Human OS + AI Stack + Execution">
+      <span class="eq-result">performance</span>
+      <span class="eq-equals">=</span>
+      <span class="eq-var">Human OS</span>
+      <span class="eq-op">+</span>
+      <span class="eq-var">AI Stack</span>
+      <span class="eq-op">+</span>
+      <span class="eq-var">Execution</span>
+    </div>
+
+    <!-- CLI Terminal (desktop) -->
+    <CLI client:load />
+
+    <!-- Mobile fallback -->
+    <div class="cli-mobile-fallback">
+      <p class="cli-mobile-title">OS Commands</p>
+      <div class="cli-mobile-buttons">
+        <a href="/scale-yourself" class="cli-mobile-btn">scale-yourself</a>
+        <a href="/scale-intelligence" class="cli-mobile-btn">scale-intelligence</a>
+        <a href="/scale-business" class="cli-mobile-btn">scale-business</a>
+        <a href="/work-with-me" class="cli-mobile-btn">hire</a>
+        <a href="/about" class="cli-mobile-btn">about</a>
+        <a href="/library" class="cli-mobile-btn">books</a>
+      </div>
+    </div>
+
+    <div class="hero-actions">
+      <a
+        href="/work-with-me"
+        class="btn-primary"
+        onclick="if(window.plausible)plausible('cta_click',{props:{location:'hero'}})"
+      >Work with me</a>
+      <a href="/about" class="btn-ghost">Learn more</a>
+    </div>
+  </section>
+
+  <!-- ── The Three Verticals ────────────────────── -->
+  <section class="verticals">
+    <div class="section">
+      <p class="section-label">Three verticals</p>
+      <h2 class="section-title">Scale in every direction</h2>
+      <p class="section-sub">
+        One person, three distinct bodies of work — each with its own tooling,
+        writing, and products.
+      </p>
+
+      <div class="verticals-grid">
+        <!-- Scale Yourself -->
+        <a href="/scale-yourself" class="vertical-card">
+          <span class="vertical-icon">01 / Human OS</span>
+          <h3 class="vertical-name">Scale<br />Yourself</h3>
+          <p class="vertical-desc">
+            Wellness tools, mental models, emotional intelligence. The software
+            that runs underneath everything else.
+          </p>
+          <div class="vertical-products">
+            <span class="vertical-tag">Vessel</span>
+            <span class="vertical-tag">Nuudge</span>
+            <span class="vertical-tag">Gram-Reaper</span>
+            <span class="vertical-tag">Emotions Soup</span>
+            <span class="vertical-tag">Beyond the Rules</span>
+          </div>
+          <span class="vertical-link">Explore →</span>
+        </a>
+
+        <!-- Scale Intelligence -->
+        <a href="/scale-intelligence" class="vertical-card">
+          <span class="vertical-icon">02 / AI Stack</span>
+          <h3 class="vertical-name">Scale<br />Intelligence</h3>
+          <p class="vertical-desc">
+            AI tools, technical infrastructure, developer output. The machinery
+            that makes thinking leverage-able.
+          </p>
+          <div class="vertical-products">
+            <span class="vertical-tag">Agent Switchboard</span>
+            <span class="vertical-tag">GitHub</span>
+            <span class="vertical-tag">The AI Upgrade</span>
+          </div>
+          <span class="vertical-link">Explore →</span>
+        </a>
+
+        <!-- Scale Business -->
+        <a href="/scale-business" class="vertical-card">
+          <span class="vertical-icon">03 / Execution</span>
+          <h3 class="vertical-name">Scale<br />Business</h3>
+          <p class="vertical-desc">
+            Leadership, team scaling, customer strategy. Built pre and post-sales
+            technical functions from the ground up.
+          </p>
+          <div class="vertical-products">
+            <span class="vertical-tag">upgrAIde</span>
+            <span class="vertical-tag">barnirhired</span>
+            <span class="vertical-tag">GiFOC</span>
+            <span class="vertical-tag">Workshops</span>
+          </div>
+          <span class="vertical-link">Explore →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Recent Signal ──────────────────────────── -->
+  <section class="section">
+    <p class="section-label">Recent signal</p>
+    <h2 class="section-title">What's shipping</h2>
+    <p class="section-sub">Latest post, latest build, latest book.</p>
+
+    <div class="signal-grid">
+      {whatsNew.map((item) => (
+        <a
+          href={item.url}
+          class="signal-card"
+          target={item.url.startsWith('http') ? '_blank' : undefined}
+          rel={item.url.startsWith('http') ? 'noopener noreferrer' : undefined}
+        >
+          <span class="signal-type">{item.label}</span>
+          <h3 class="signal-title">{item.title}</h3>
+          <p class="signal-desc">{item.description}</p>
+          <span class="signal-link">Read →</span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- ── Credentials ────────────────────────────── -->
+  <section class="credentials">
+    <div class="section">
+      <div class="cred-inner">
+        <div>
+          <div class="cred-stats">
+            <div>
+              <div class="stat-number">200+</div>
+              <div class="stat-label">People hired</div>
+            </div>
+            <div>
+              <div class="stat-number">5</div>
+              <div class="stat-label">Books</div>
+            </div>
+            <div>
+              <div class="stat-number">13+</div>
+              <div class="stat-label">Products built</div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <p class="section-label">Who is this</p>
+          <p class="cred-text">
+            Built pre and post-sales technical teams of all flavours from the ground up —
+            Customer Success, Solutions Engineering, Support, Technical Account Management.
+            Connected companies to their <strong>first CS hire</strong> and scaled those functions
+            into world-class orgs. I know what the table looks like from every side.
+            Now building for the AI era <strong>without fear</strong>.
+          </p>
+          <div class="cred-links">
+            <a href="/about" class="btn-ghost" style="padding: 9px 18px; font-size: 13px;">Full story</a>
+            <a
+              href="/work-with-me"
+              class="btn-primary"
+              style="padding: 9px 18px; font-size: 13px;"
+              onclick="if(window.plausible)plausible('cta_click',{props:{location:'credentials'}})"
+            >Work together</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA Strip ──────────────────────────────── -->
+  <section class="cta-strip">
+    <h2 class="cta-strip-title">Let's build something.</h2>
+    <p class="cta-strip-sub">
+      Board advisory. Team building. AI strategy. Leadership coaching.
+    </p>
+    <div class="hero-actions">
+      <a
+        href="/work-with-me"
+        class="btn-primary"
+        onclick="if(window.plausible)plausible('cta_click',{props:{location:'cta-strip'}})"
+      >Work with me</a>
+      <a href={CONTACT} class="btn-ghost">Email directly</a>
+    </div>
+  </section>
+</Layout>

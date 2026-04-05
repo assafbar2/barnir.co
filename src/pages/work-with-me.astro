@@ -1,0 +1,67 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const CONTACT = 'mailto:assafbar@gmail.com,barnir@agentmail.to?subject=Let%27s%20work%20together';
+---
+
+<Layout
+  title="Work with Assaf Barnir — Unscared OS"
+  description="Board advisory. Team building. AI strategy. Leadership coaching. Let's build something together."
+  ogTitle="Work with Assaf Barnir"
+  ogDescription="Board advisory. Team building. AI strategy. Leadership coaching."
+  ogImage="/og/work-with-me.png"
+>
+  <section class="hero" style="min-height: 80vh;">
+    <p class="hero-eyebrow">Work with me</p>
+    <h1 class="hero-headline">Let's build something.</h1>
+    <p class="hero-sub">
+      Board advisory, AI strategy, CS team building, leadership coaching.
+      The table's open.
+    </p>
+    <div class="hero-actions" style="margin-top: 40px;">
+      <a href={CONTACT} class="btn-primary"
+         onclick="if(window.plausible)plausible('cta_click',{props:{location:'work-with-me-hero'}})">
+        Email me
+      </a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="verticals-grid" style="max-width: 800px;">
+      <div class="vertical-card">
+        <span class="vertical-icon">Board</span>
+        <h3 class="vertical-name">Board & Advisory</h3>
+        <p class="vertical-desc">
+          Joining smaller, cooler boards where the work actually matters.
+          Bring me in where AI strategy, customer-facing execution, and team scaling are the needle movers.
+        </p>
+      </div>
+      <div class="vertical-card">
+        <span class="vertical-icon">Team</span>
+        <h3 class="vertical-name">CS Team Building</h3>
+        <p class="vertical-desc">
+          From first CS hire to world-class org. Pre and post-sales technical functions —
+          Customer Success, Solutions Engineering, Support, TAM.
+        </p>
+      </div>
+      <div class="vertical-card">
+        <span class="vertical-icon">AI</span>
+        <h3 class="vertical-name">AI Strategy</h3>
+        <p class="vertical-desc">
+          Not the "AI for everyone" kind. The "here's exactly how your team
+          compounds with AI" kind. via upgrAIde.co workshops or direct engagement.
+        </p>
+      </div>
+    </div>
+
+    <div style="margin-top: 64px; text-align: center;">
+      <a href={CONTACT} class="btn-primary"
+         onclick="if(window.plausible)plausible('cta_click',{props:{location:'work-with-me-bottom'}})">
+        Start a conversation
+      </a>
+      <p style="margin-top: 16px; font-size: 13px; color: var(--text-dim);">
+        assafbar@gmail.com · barnir@agentmail.to
+      </p>
+    </div>
+  </section>
+</Layout>
