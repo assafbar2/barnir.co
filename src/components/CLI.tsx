@@ -64,7 +64,7 @@ the ground up: CS, Solutions Engineering, Support, TAM.
 Connected companies to their first CS hire and scaled those
 functions into world-class orgs.
 
-3 verticals. 5 books. 13+ products. One thesis:
+3 verticals. 4* books. 13+ products. One thesis:
 performance = Human OS + AI Stack + Execution.`,
       };
 
@@ -89,7 +89,8 @@ Scale Business:
         output: `UNSCARED: AI         → lead alongside AI — the anchor book
 Emotions Soup        → the feelings that run your decisions
 Beyond the Rules     → mental models for people who stopped following the script
-+ 2 more coming soon`,
+AI in Your Background → coming soon — operating in the age of ambient intelligence
+* 4 books. One more in the works.`,
       };
 
     case 'scale-yourself':
