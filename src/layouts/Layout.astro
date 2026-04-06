@@ -56,6 +56,10 @@ const canonical = canonicalUrl || Astro.url.href;
     <!-- Theme: apply saved preference before paint to avoid flash -->
     <script is:inline>
       (function () {
+        // Disable browser scroll restoration so page always loads at top
+        if (history.scrollRestoration) history.scrollRestoration = 'manual';
+        window.scrollTo(0, 0);
+        // Apply theme before paint to avoid flash
         const saved = localStorage.getItem('theme');
         const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
         const theme = saved || (prefersDark ? 'dark' : 'light');
