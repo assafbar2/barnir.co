@@ -11,12 +11,21 @@ const COMMANDS = [
   'hire', 'contact', 'substack', 'github', 'clear', 'whoami',
 ];
 
+// Strip leading slash so /help and help both resolve
+function normalize(input: string): string {
+  return input.trim().replace(/^\//, '').toLowerCase();
+}
+
 function getCompletionCandidate(input: string): string {
   if (!input) return '';
   const trimmed = input.trim();
   if (!trimmed) return '';
-  const match = COMMANDS.find(cmd => cmd.startsWith(trimmed) && cmd !== trimmed);
-  return match ? match.slice(trimmed.length) : '';
+  const hasSlash = trimmed.startsWith('/');
+  const bare = hasSlash ? trimmed.slice(1) : trimmed;
+  const match = COMMANDS.find(cmd => cmd.startsWith(bare) && cmd !== bare);
+  if (!match) return '';
+  // Complete the rest of the command (not the slash — user typed that)
+  return match.slice(bare.length);
 }
 
 function trackCLI(command: string) {
@@ -26,26 +35,26 @@ function trackCLI(command: string) {
 }
 
 function handleCommand(cmd: string): { output: string; navigate?: string; newTab?: string } {
-  const c = cmd.trim().toLowerCase();
+  const c = normalize(cmd);
 
   switch (c) {
     case 'help':
       return {
         output: `Available commands:
 
-  help              → list commands
-  about             → who is Assaf
-  projects          → all products built
-  books             → all books
-  scale-yourself    → Human OS vertical
-  scale-intelligence→ AI Stack vertical
-  scale-business    → Execution vertical
-  hire              → work with me
-  contact           → get in touch
-  substack          → newsletter
-  github            → code
-  whoami            → something unexpected
-  clear             → clear terminal`,
+  /help              → list commands
+  /about             → who is Assaf
+  /projects          → all products built
+  /books             → all books
+  /scale-yourself    → Human OS vertical
+  /scale-intelligence→ AI Stack vertical
+  /scale-business    → Execution vertical
+  /hire              → work with me
+  /contact           → get in touch
+  /substack          → newsletter
+  /github            → code
+  /whoami            → something unexpected
+  /clear             → clear terminal`,
       };
 
     case 'about':
@@ -128,7 +137,7 @@ Or just type 'hire' to go straight to the work-with-me page.`,
 
 export default function CLI() {
   const [history, setHistory] = useState<HistoryEntry[]>([
-    { type: 'output', text: 'Unscared OS v1.0 — type \'help\' to explore' },
+    { type: 'output', text: 'Unscared OS v1.0 — type /help to explore' },
   ]);
   const [input, setInput] = useState('');
   const [ghost, setGhost] = useState('');
@@ -160,7 +169,7 @@ export default function CLI() {
     setGhost('');
 
     if (result.output === '__CLEAR__') {
-      setHistory([{ type: 'output', text: 'Unscared OS v1.0 — type \'help\' to explore' }]);
+      setHistory([{ type: 'output', text: 'Unscared OS v1.0 — type /help to explore' }]);
       return;
     }
 

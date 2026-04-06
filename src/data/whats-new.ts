@@ -14,9 +14,9 @@ export const whatsNew: WhatsNewItem[] = [
   {
     type: 'post',
     label: 'Latest writing',
-    title: 'Why Your CS Team Isn\'t Surviving the AI Transition',
-    description: 'The playbook most CS leaders are running is built for a world that no longer exists.',
-    url: 'https://barnir.substack.com',
+    title: 'Excerpt from UNSCARED: AI',
+    description: 'A chapter from the book — what it actually means to lead alongside AI without fear. 2nd edition in the works.',
+    url: 'https://barnir.substack.com/p/excerpt-from-unscared-ai',
     date: '2026-04-01',
   },
   {
@@ -31,8 +31,8 @@ export const whatsNew: WhatsNewItem[] = [
     type: 'book',
     label: 'Latest book',
     title: 'UNSCARED: AI',
-    description: 'The framework for leading alongside AI — not behind it, not despite it.',
-    url: '#',
+    description: 'The framework for leading alongside AI — not behind it, not despite it. 2nd edition in the works.',
+    url: 'https://barnir.substack.com/p/excerpt-from-unscared-ai',
     date: '2026-02-15',
   },
 ];
