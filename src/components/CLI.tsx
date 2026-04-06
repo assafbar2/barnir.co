@@ -259,6 +259,7 @@ export default function CLI() {
               spellCheck={false}
               aria-label="Terminal input"
               maxLength={120}
+              style={{ width: `${Math.max(1, input.length)}ch` }}
             />
             {ghost && (
               <span className="cli-ghost" aria-hidden="true">
