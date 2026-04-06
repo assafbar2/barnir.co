@@ -149,6 +149,11 @@ export default function CLI() {
   const bodyRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Auto-focus on mount without scrolling the page
+    inputRef.current?.focus({ preventScroll: true });
+  }, []);
+
+  useEffect(() => {
     // Scroll within the CLI body only — never scroll the page
     if (bodyRef.current) {
       bodyRef.current.scrollTop = bodyRef.current.scrollHeight;
