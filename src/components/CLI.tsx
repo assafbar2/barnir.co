@@ -145,9 +145,13 @@ export default function CLI() {
   const [historyIndex, setHistoryIndex] = useState(-1);
   const inputRef = useRef<HTMLInputElement>(null);
   const bottomRef = useRef<HTMLDivElement>(null);
+  const bodyRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
+    // Scroll within the CLI body only — never scroll the page
+    if (bodyRef.current) {
+      bodyRef.current.scrollTop = bodyRef.current.scrollHeight;
+    }
   }, [history]);
 
   const handleInput = useCallback((value: string) => {
@@ -231,7 +235,7 @@ export default function CLI() {
         <span className="cli-title">unscared-os — bash</span>
       </div>
 
-      <div className="cli-body">
+      <div className="cli-body" ref={bodyRef}>
         {history.map((entry, i) => (
           <div key={i} className={`cli-line cli-line--${entry.type}`}>
             {entry.type === 'input' && <span className="cli-prompt">❯ </span>}
