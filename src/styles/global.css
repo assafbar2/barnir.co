@@ -149,7 +149,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; color: 
   :root:not([data-theme="dark"]) .theme-toggle .icon-sun  { display: block; }
 }
 
-/* ─── Hero ───────────────────────────────────────── */
+/* ─── Hero — top-aligned ────────────────────────── */
 .hero {
   min-height: 100vh;
   display: flex;
