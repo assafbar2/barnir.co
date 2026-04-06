@@ -1,4 +1,4 @@
-/* ─── Design tokens ─────────────────────────────── */
+/* ─── Design tokens — Dark (default) ────────────── */
 :root {
   --bg: #0a0a0a;
   --bg-card: #111111;
@@ -10,11 +10,51 @@
   --text-dim: #444;
   --green: #22c55e;
   --green-dim: rgba(34, 197, 94, 0.12);
+  --nav-bg: rgba(10, 10, 10, 0.92);
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
   --radius: 8px;
   --radius-lg: 12px;
   --transition: 0.15s ease;
+}
+
+/* ─── Design tokens — Light ──────────────────────── */
+[data-theme="light"] {
+  --bg: #f9f9f7;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f4f4f2;
+  --border: #e4e4e0;
+  --border-hover: #d0d0cc;
+  --text: #0a0a0a;
+  --text-muted: #666;
+  --text-dim: #aaa;
+  --green: #16a34a;
+  --green-dim: rgba(22, 163, 74, 0.08);
+  --nav-bg: rgba(249, 249, 247, 0.92);
+}
+
+/* System preference fallback (no JS / no manual toggle) */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --bg: #f9f9f7;
+    --bg-card: #ffffff;
+    --bg-card-hover: #f4f4f2;
+    --border: #e4e4e0;
+    --border-hover: #d0d0cc;
+    --text: #0a0a0a;
+    --text-muted: #666;
+    --text-dim: #aaa;
+    --green: #16a34a;
+    --green-dim: rgba(22, 163, 74, 0.08);
+    --nav-bg: rgba(249, 249, 247, 0.92);
+  }
+}
+
+/* ─── Theme transition ───────────────────────────── */
+html { color-scheme: dark light; }
+body, .nav, .cli-terminal, .cli-header, .cli-body,
+.vertical-card, .signal-card, .credentials {
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
 
 /* ─── Reset ─────────────────────────────────────── */
@@ -43,7 +83,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; color: 
   justify-content: space-between;
   padding: 0 40px;
   height: 60px;
-  background: rgba(10, 10, 10, 0.92);
+  background: var(--nav-bg);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
 }
@@ -77,6 +117,37 @@ button { cursor: pointer; border: none; background: none; font: inherit; color: 
   transition: background var(--transition), color var(--transition) !important;
 }
 .nav-cta:hover { background: var(--green) !important; }
+
+/* Theme toggle button */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  background: transparent;
+  cursor: pointer;
+  transition: border-color var(--transition), color var(--transition), background var(--transition);
+  flex-shrink: 0;
+}
+.theme-toggle:hover {
+  border-color: var(--border-hover);
+  color: var(--text);
+  background: var(--bg-card);
+}
+.theme-toggle svg { width: 14px; height: 14px; }
+/* Show correct icon per theme */
+.theme-toggle .icon-moon { display: block; }
+.theme-toggle .icon-sun  { display: none; }
+[data-theme="light"] .theme-toggle .icon-moon { display: none; }
+[data-theme="light"] .theme-toggle .icon-sun  { display: block; }
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) .theme-toggle .icon-moon { display: none; }
+  :root:not([data-theme="dark"]) .theme-toggle .icon-sun  { display: block; }
+}
 
 /* ─── Hero ───────────────────────────────────────── */
 .hero {
@@ -147,20 +218,20 @@ button { cursor: pointer; border: none; background: none; font: inherit; color: 
 .cli-terminal {
   width: 100%;
   max-width: 640px;
-  background: #0d0d0d;
+  background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   overflow: hidden;
   margin: 0 auto 48px;
   cursor: text;
-  box-shadow: 0 0 0 1px rgba(34, 197, 94, 0.06), 0 24px 64px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 0 1px rgba(34, 197, 94, 0.06), 0 24px 64px rgba(0, 0, 0, 0.4);
 }
 .cli-header {
   display: flex;
   align-items: center;
   gap: 6px;
   padding: 10px 14px;
-  background: #111;
+  background: var(--bg);
   border-bottom: 1px solid var(--border);
 }
 .cli-dot {
