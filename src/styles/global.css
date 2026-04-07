@@ -168,18 +168,13 @@ button { cursor: pointer; border: none; background: none; font: inherit; color: 
   text-transform: uppercase;
   margin-bottom: 28px;
 }
-.hero-eyebrow::before {
-  content: '';
-  display: inline-block;
-  width: 6px;
-  height: 6px;
-  background: var(--green);
+.hero-avatar {
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  animation: pulse 2s ease-in-out infinite;
-}
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.3; }
+  object-fit: cover;
+  border: 1.5px solid var(--border);
+  flex-shrink: 0;
 }
 .hero-headline {
   font-size: clamp(36px, 6vw, 72px);
