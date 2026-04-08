@@ -106,8 +106,8 @@ Beyond the Rules → mental models for people who write their own script (beyond
 
     case 'contact':
       return {
-        output: `Email: assafbar@gmail.com or barnir@agentmail.to
-Or just type 'hire' to go straight to the work-with-me page.`,
+        output: `barnir@agentmail.to — Me + AI Mailbox
+Or type 'hire' to go straight to the work-with-me page.`,
       };
 
     case 'substack':
