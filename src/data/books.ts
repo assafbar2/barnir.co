@@ -7,8 +7,7 @@ export interface Book {
 }
 
 export const books: Book[] = [
-  { title: 'UNSCARED: AI', url: '#', description: 'Lead alongside AI — without fear. The anchor book for everything here.', vertical: 'library' },
-  { title: 'Emotions Soup', url: '#', description: 'Making sense of the feelings that run your decisions', vertical: 'scale-yourself' },
-  { title: 'Beyond the Rules', url: '#', description: 'The mental models for people who stopped following the script, on the roads', vertical: 'scale-yourself' },
-  // 2 additional books — titles TBD
+  { title: 'UNSCARED: AI', url: 'https://unscaredai.com/', description: 'Wrote this for my aunt. Turns out I\'ve got a lot more than just one. Live alongside AI, without fear.', vertical: 'library' },
+  { title: 'Emotions Soup', url: 'https://emotions-soup.carrd.co/', description: 'Understand the internal signals (emotions) driving your decisions. Before you scale any system, you need to understand the system generating the inputs', vertical: 'scale-yourself' },
+  { title: 'Beyond the Rules', url: 'https://beyond-the-rules.carrd.co/', description: 'Mental models for people who write their own script. An OS update for independent thinkers.', vertical: 'scale-yourself' },
 ];

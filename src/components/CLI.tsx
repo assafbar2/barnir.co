@@ -59,38 +59,37 @@ function handleCommand(cmd: string): { output: string; navigate?: string; newTab
 
     case 'about':
       return {
-        output: `Built pre and post-sales technical teams of all flavours from
-the ground up: CS, Solutions Engineering, Support, TAM.
-Connected companies to their first CS hire and scaled those
-functions into world-class orgs.
+        output: `Engineer in the gap between technical teams and the humans
+they serve. CS, Solutions Engineering, Support, TAM —
+built from scratch, scaled, learned what works.
 
-3 verticals. 4* books. 13+ products. One thesis:
+3 verticals. 4 books. 13+ products. One thesis:
 performance = Human OS + AI Stack + Execution.`,
       };
 
     case 'projects':
       return {
         output: `Scale Yourself:
-  Vessel          → wellness tracking for your Human OS
-  Nuudge          → behavioral nudge system
-  Gram-Reaper     → habit elimination tool
+  Vessel          → wellness tracking, vessel.here.now + github.com/assafbar2/Vessel
+  Nuudge          → human-to-human nudges (nuudge.app)
+  Gram-Reaper     → singular focus tool, github.com/assafbar2/gram-reaper
 
 Scale Intelligence:
-  Agent Switchboard → multi-agent routing (agentswitchboard.dev)
+  Agent Switchboard → learn, find, route & orchestrate AI agents (agentswitchboard.dev)
+  GitHub          → 13+ projects (github.com/assafbar2)
 
 Scale Business:
-  upgrAIde        → AI upskilling platform (upgrai.de)
-  barnirhired     → CS hiring strategy (barnirhired.com)
+  upgrAIde        → AI upskilling (upgrAIde.co)
+  barnirhired     → CS hiring, barnirhired.com
   GiFOC           → get in front of customers (gifoc.com)`,
       };
 
     case 'books':
       return {
-        output: `UNSCARED: AI         → lead alongside AI — the anchor book
-Emotions Soup        → the feelings that run your decisions
-Beyond the Rules     → mental models for people who stopped following the script
-AI in Your Background → coming soon — operating in the age of ambient intelligence
-* 4 books. One more in the works.`,
+        output: `UNSCARED: AI     → live alongside AI, without fear (unscaredai.com)
+Emotions Soup    → understand the signals driving your decisions (emotions-soup.carrd.co)
+Beyond the Rules → mental models for people who write their own script (beyond-the-rules.carrd.co)
+* 4 books.`,
       };
 
     case 'scale-yourself':
@@ -115,7 +114,7 @@ Or just type 'hire' to go straight to the work-with-me page.`,
       return { output: 'Opening Substack...', newTab: 'https://barnir.substack.com' };
 
     case 'github':
-      return { output: 'Opening GitHub...', newTab: 'https://github.com/assafbarnir' };
+      return { output: 'Opening GitHub...', newTab: 'https://github.com/assafbar2' };
 
     case 'whoami':
       return {
