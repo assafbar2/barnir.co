@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import Analytics from '@vercel/analytics/astro';
 
 interface Props {
   title?: string;
@@ -70,12 +71,6 @@ const canonical = canonicalUrl || Astro.url.href;
     <!-- Page-level schema injection -->
     <slot name="head" />
 
-    <!-- Plausible analytics -->
-    <script
-      defer
-      data-domain="barnir.co"
-      src="https://plausible.io/js/script.js"
-    ></script>
   </head>
   <body>
     <nav class="nav" role="navigation" aria-label="Main navigation">
@@ -146,5 +141,6 @@ const canonical = canonicalUrl || Astro.url.href;
         <li><a href="/work-with-me">Work with me</a></li>
       </ul>
     </footer>
+    <Analytics />
   </body>
 </html>
