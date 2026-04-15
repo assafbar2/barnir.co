@@ -12,7 +12,7 @@ export interface Book {
   /** May contain <strong> tags for emphasis. Use set:html in templates. */
   description: string;
   vertical: 'scale-yourself' | 'scale-intelligence' | 'library';
-  tags: string[];
+  tags?: string[];
   cover?: string;
   hook?: string;
   testimonial?: { text: string; author: string };
@@ -79,7 +79,6 @@ export const books: Book[] = [
     buyLinks: {
       amazon: 'https://www.amazon.com/Beyond-Rules-Drive-Smart-Survive/dp/B0CHW9J46Q',
       google: 'https://play.google.com/store/books/details/Barnir_Beyond_the_Rules_Drive_Smart_Stay_Safe_and?id=xbvLEAAAQBAJ',
-      audible: 'https://play.google.com/store/audiobooks/details?id=AQAAAEDiMRhx6M',
     },
     note: 'Revenue → Kailee Mills Foundation ↗',
   },
