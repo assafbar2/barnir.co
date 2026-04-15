@@ -66,6 +66,7 @@ import { books } from '../data/books';
               <p class="book-hook">{book.hook}</p>
             )}
 
+            {/* set:html is intentional — book.description is static data in books.ts that may contain <strong> tags. Never source from user input or CMS without sanitization. */}
             <p class="book-desc" set:html={book.description} />
 
             {book.testimonial && (
@@ -77,7 +78,7 @@ import { books } from '../data/books';
 
             <div class="book-links">
               {book.comingSoon ? (
-                <a href="https://barnir.substack.com/" class="btn-book-primary" target="_blank" rel="noopener noreferrer">
+                <a href={book.url} class="btn-book-primary" target="_blank" rel="noopener noreferrer">
                   Get notified when it drops →
                 </a>
               ) : (
@@ -148,7 +149,6 @@ import { books } from '../data/books';
   .book-list {
     display: flex;
     flex-direction: column;
-    gap: 0;
   }
 
   .book-card {
@@ -157,10 +157,9 @@ import { books } from '../data/books';
     gap: 40px;
     align-items: start;
     padding: 40px 0;
-    border-bottom: 1px solid var(--border);
   }
-  .book-card:last-child {
-    border-bottom: none;
+  .book-card + .book-card {
+    border-top: 1px solid var(--border);
   }
   .book-card--coming-soon {
     opacity: 0.75;
@@ -169,7 +168,6 @@ import { books } from '../data/books';
   /* ── Cover ── */
   .book-cover-wrap {
     position: relative;
-    flex-shrink: 0;
   }
   .book-cover-img {
     width: 160px;
@@ -336,6 +334,9 @@ import { books } from '../data/books';
     .book-card {
       grid-template-columns: 1fr;
       gap: 20px;
+    }
+    .book-cover-wrap {
+      margin: 0 auto;
     }
     .book-cover-img,
     .book-cover-placeholder {
