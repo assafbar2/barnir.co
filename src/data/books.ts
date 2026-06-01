@@ -5,6 +5,12 @@ export interface BuyLinks {
   other?: { label: string; url: string }[];
 }
 
+export interface CtaLink {
+  label: string;
+  url: string;
+  primary?: boolean;
+}
+
 export interface Book {
   title: string;
   subtitle?: string;
@@ -15,14 +21,44 @@ export interface Book {
   tags?: string[];
   cover?: string;
   hook?: string;
+  thesis?: string;
+  templates?: string[];
   testimonial?: { text: string; author: string };
   buyLinks?: BuyLinks;
+  ctaLinks?: CtaLink[];
   badge?: string;
   note?: string;
   comingSoon?: boolean;
+  isFeatured?: boolean;
 }
 
 export const books: Book[] = [
+  {
+    title: 'The Support Machine',
+    subtitle: 'How to Deploy AI in Customer Support Without Breaking Trust',
+    url: 'https://assafbar2.github.io/the-support-machine/',
+    description: 'Written for CS leaders and support engineers who are past the hype and need to actually ship this. Covers diagnosing the queue, evaluating vendors, designing the architecture, running the shadow test, surviving launch day, and operating the machine 30 days in. Then it becomes the tool — install it as an AI skill and use it to build the artifacts while you work.',
+    vertical: 'library',
+    tags: ['Scale Business', 'CS & Support'],
+    hook: '// This is not a chatbot book. It\'s a field guide for the migration.',
+    thesis: 'AI support is not a chatbot project. It is an operating model migration.',
+    templates: [
+      'Vendor scorecard',
+      'Shadow run scorecard',
+      'Launch runbook',
+      'First 30 days review',
+      'Operating model',
+      'AI rollout plan',
+    ],
+    ctaLinks: [
+      { label: 'Read online →', url: 'https://assafbar2.github.io/the-support-machine/', primary: true },
+      { label: 'Use the skill →', url: 'https://assafbar2.github.io/the-support-machine/skill.html' },
+      { label: 'Download PDF', url: 'https://assafbar2.github.io/the-support-machine/the-support-machine-v0.2.pdf' },
+      { label: 'GitHub →', url: 'https://github.com/assafbar2/the-support-machine' },
+    ],
+    badge: 'Just shipped',
+    isFeatured: true,
+  },
   {
     title: 'UNSCARED: AI',
     url: 'https://unscaredai.com/',
@@ -81,16 +117,5 @@ export const books: Book[] = [
       google: 'https://play.google.com/store/books/details/Barnir_Beyond_the_Rules_Drive_Smart_Stay_Safe_and?id=xbvLEAAAQBAJ',
     },
     note: 'Revenue → Kailee Mills Foundation',
-  },
-  {
-    title: 'UNSCARED: The Machine Shift',
-    subtitle: 'A Systematic Guide to the AI Migration Files',
-    url: 'https://barnir.substack.com/',
-    description: 'The follow-up to UNSCARED: AI — going deeper into what it actually takes to move your work, your team, and your thinking into the AI era. <strong>Not theory.</strong> Filed observations from the transition.',
-    vertical: 'library',
-    tags: ['AI', 'Scale Intelligence', 'Series: Unscared'],
-    hook: '// The migration has already started. This is the field guide.',
-    badge: 'Coming soon',
-    comingSoon: true,
   },
 ];
