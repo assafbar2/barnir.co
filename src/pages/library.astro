@@ -38,8 +38,8 @@ const regularBooks = books.filter(b => !b.isFeatured);
             <span class="featured-ribbon">{featuredBook.badge}</span>
           )}
 
-          {/* Terminal "cover" placeholder */}
-          <div class="featured-terminal">
+          {/* Terminal "cover" placeholder — decorative, hidden from screen readers */}
+          <div class="featured-terminal" aria-hidden="true">
             <div class="terminal-bar">
               <span class="terminal-dot terminal-dot--red"></span>
               <span class="terminal-dot terminal-dot--yellow"></span>
