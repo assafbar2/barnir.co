@@ -30,9 +30,9 @@ export const whatsNew: WhatsNewItem[] = [
   {
     type: 'book',
     label: 'Latest book',
-    title: 'UNSCARED: AI',
-    description: 'How I wrote a book with AI — and what it taught me about working alongside it without fear. 2nd edition in the works.',
-    url: 'https://barnir.substack.com/p/excerpt-from-unscared-ai',
-    date: '2026-02-15',
+    title: 'The Support Machine',
+    description: 'A full manuscript and executable AI skill for deploying AI in customer support without breaking trust. Free and open source.',
+    url: 'https://assafbar2.github.io/the-support-machine/',
+    date: '2026-05-31',
   },
 ];
