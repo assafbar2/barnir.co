@@ -62,7 +62,7 @@ export const books: Book[] = [
       google: 'https://play.google.com/store/books/details?id=4foGEQAAQBAJ',
       audible: 'https://play.google.com/store/audiobooks/details?id=AQAAAEDiMRhx6M',
     },
-    note: 'Proceeds donated ↗',
+    note: 'Proceeds donated',
   },
   {
     title: 'Beyond the Rules',
@@ -80,7 +80,7 @@ export const books: Book[] = [
       amazon: 'https://www.amazon.com/Beyond-Rules-Drive-Smart-Survive/dp/B0CHW9J46Q',
       google: 'https://play.google.com/store/books/details/Barnir_Beyond_the_Rules_Drive_Smart_Stay_Safe_and?id=xbvLEAAAQBAJ',
     },
-    note: 'Revenue → Kailee Mills Foundation ↗',
+    note: 'Revenue → Kailee Mills Foundation',
   },
   {
     title: 'UNSCARED: The Machine Shift',

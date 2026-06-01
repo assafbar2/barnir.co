@@ -24,7 +24,7 @@ import { books } from '../data/books';
     <p class="section-label">Books — Unscared OS</p>
 
     <div class="book-list">
-      {books.map((book) => (
+      {books.map((book, i) => (
         <div
           id={book.title.toLowerCase().replace(/[:\s]+/g, '-').replace(/[^a-z0-9-]/g, '')}
           class={`book-card${book.comingSoon ? ' book-card--coming-soon' : ''}`}
@@ -37,7 +37,8 @@ import { books } from '../data/books';
                 class="book-cover-img"
                 width="160"
                 height="160"
-                loading="lazy"
+                loading={i === 0 ? 'eager' : 'lazy'}
+                fetchpriority={i === 0 ? 'high' : undefined}
                 decoding="async"
               />
             ) : (
