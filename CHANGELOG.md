@@ -2,6 +2,22 @@
 
 All notable changes to barnir.co are documented here.
 
+## [0.0.3.0] - 2026-05-31
+
+### Added
+- **The Support Machine** — featured as the flagship 4th book across the site: hero card on /library, Book section on /scale-business, updated homepage "What's shipping" signal
+- **Featured book card** — full-width hero treatment with terminal-style placeholder, thesis pull-quote, 6 template pills (vendor scorecard, shadow run, launch runbook, first 30 days review, operating model, AI rollout plan), and 4 CTAs (Read online, Use the skill, Download PDF, GitHub)
+- `isFeatured`, `ctaLinks`, `thesis`, `templates` fields added to the `Book` data type
+
+### Changed
+- Library page hero copy updated to address CS leaders explicitly: "CS leaders whose support orgs haven't migrated yet…"
+- Section labels on /library updated to "New release" and "Also by Barnir"
+- Homepage "Latest book" signal now surfaces The Support Machine
+
+### Fixed
+- Terminal placeholder (`aria-hidden="true"`) — screen readers no longer narrate decorative terminal content
+- Reduced-motion guard on cursor blink animation
+
 ## [0.0.2.0] - 2026-04-15
 
 ### Added
