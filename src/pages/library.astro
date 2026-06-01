@@ -25,14 +25,20 @@ import { books } from '../data/books';
 
     <div class="book-list">
       {books.map((book) => (
-        <div class={`book-card${book.comingSoon ? ' book-card--coming-soon' : ''}`}>
+        <div
+          id={book.title.toLowerCase().replace(/[:\s]+/g, '-').replace(/[^a-z0-9-]/g, '')}
+          class={`book-card${book.comingSoon ? ' book-card--coming-soon' : ''}`}
+        >
           <div class="book-cover-wrap">
             {book.cover ? (
               <img
                 src={book.cover}
                 alt={`${book.title} cover`}
                 class="book-cover-img"
+                width="160"
+                height="160"
                 loading="lazy"
+                decoding="async"
               />
             ) : (
               <div class="book-cover-placeholder">
@@ -309,6 +315,10 @@ import { books } from '../data/books';
   .btn-book-primary:hover {
     background: var(--green);
   }
+  .btn-book-primary:focus-visible {
+    outline: 2px solid var(--green);
+    outline-offset: 2px;
+  }
   .btn-book-secondary {
     font-size: 12px;
     color: var(--text-muted);
@@ -321,6 +331,10 @@ import { books } from '../data/books';
   .btn-book-secondary:hover {
     color: var(--text);
     border-color: var(--border-hover);
+  }
+  .btn-book-secondary:focus-visible {
+    outline: 2px solid var(--green);
+    outline-offset: 2px;
   }
   .book-note {
     font-size: 11px;
