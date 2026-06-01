@@ -5,34 +5,119 @@ import { books } from '../data/books';
 
 <Layout
   title="Library — Assaf Barnir"
-  description="All books by Assaf Barnir — plus long-form writing on Human OS, AI, and execution."
+  description="Four books by Assaf Barnir — AI, emotions, mental models, and the human OS."
   ogTitle="Library — Assaf Barnir"
-  ogDescription="Four books. Unscared OS, Emotions Soup, Beyond the Rules, and more."
+  ogDescription="Four books. One thesis. Written for people who don't want to be left behind."
   ogImage="/og/library.png"
 >
   <section class="hero" style="min-height: 50vh;">
     <p class="hero-eyebrow">Library</p>
     <h1 class="hero-headline">Four books.<br />One thesis.</h1>
     <p class="hero-sub">
-      Everything written under the Unscared OS umbrella — and where it fits.
+      I write for the people who don't want to be left behind —
+      by AI, by their own emotions, or by a world that keeps moving
+      faster than the rules say it should.
     </p>
   </section>
 
   <section class="section" style="padding-top: 0;">
-    <div class="signal-grid">
-      {books.map((book) => (
-        <a
-          href={book.url}
-          class="signal-card"
-          target={book.url !== '#' ? '_blank' : undefined}
-          rel={book.url !== '#' ? 'noopener noreferrer' : undefined}
+    <p class="section-label">Books — Unscared OS</p>
+
+    <div class="book-list">
+      {books.map((book, i) => (
+        <div
+          id={book.title.toLowerCase().replace(/[:\s]+/g, '-').replace(/[^a-z0-9-]/g, '')}
+          class={`book-card${book.comingSoon ? ' book-card--coming-soon' : ''}`}
         >
-          <span class="signal-type">Book</span>
-          <h3 class="signal-title">{book.title}</h3>
-          <p class="signal-desc">{book.description}</p>
-          {book.url !== '#' && <span class="signal-link">Read →</span>}
-          {book.url === '#' && <span class="signal-link" style="opacity:0.4">Coming soon</span>}
-        </a>
+          <div class="book-cover-wrap">
+            {book.cover ? (
+              <img
+                src={book.cover}
+                alt={`${book.title} cover`}
+                class="book-cover-img"
+                width="160"
+                height="160"
+                loading={i === 0 ? 'eager' : 'lazy'}
+                fetchpriority={i === 0 ? 'high' : undefined}
+                decoding="async"
+              />
+            ) : (
+              <div class="book-cover-placeholder">
+                <span class="book-cover-placeholder-title">{book.title}</span>
+                {book.subtitle && (
+                  <span class="book-cover-placeholder-sub">{book.subtitle}</span>
+                )}
+              </div>
+            )}
+            {book.badge && (
+              <span class="book-badge">{book.badge}</span>
+            )}
+          </div>
+
+          <div class="book-meta">
+            <div class="book-tags">
+              {book.tags?.map((tag, i) => (
+                <>
+                  {i > 0 && <span class="book-tag-sep">·</span>}
+                  <span class="book-tag">{tag}</span>
+                </>
+              ))}
+            </div>
+
+            <h2 class="book-title">{book.title}</h2>
+            {book.subtitle && (
+              <p class="book-subtitle">{book.subtitle}</p>
+            )}
+
+            {book.hook && (
+              <p class="book-hook">{book.hook}</p>
+            )}
+
+            {/* set:html is intentional — book.description is static data in books.ts that may contain <strong> tags. Never source from user input or CMS without sanitization. */}
+            <p class="book-desc" set:html={book.description} />
+
+            {book.testimonial && (
+              <blockquote class="book-testimonial">
+                <p>"{book.testimonial.text}"</p>
+                <cite>— {book.testimonial.author}</cite>
+              </blockquote>
+            )}
+
+            <div class="book-links">
+              {book.comingSoon ? (
+                <a href={book.url} class="btn-book-primary" target="_blank" rel="noopener noreferrer">
+                  Get notified when it drops →
+                </a>
+              ) : (
+                <>
+                  {book.buyLinks?.amazon && (
+                    <a href={book.buyLinks.amazon} class="btn-book-primary" target="_blank" rel="noopener noreferrer">
+                      Amazon →
+                    </a>
+                  )}
+                  {book.buyLinks?.google && (
+                    <a href={book.buyLinks.google} class="btn-book-secondary" target="_blank" rel="noopener noreferrer">
+                      Google Books
+                    </a>
+                  )}
+                  {book.buyLinks?.audible && (
+                    <a href={book.buyLinks.audible} class="btn-book-secondary" target="_blank" rel="noopener noreferrer">
+                      Audible
+                    </a>
+                  )}
+                  {book.buyLinks?.other?.map((link) => (
+                    <a href={link.url} class="btn-book-secondary" target="_blank" rel="noopener noreferrer">
+                      {link.label}
+                    </a>
+                  ))}
+                  {book.note && (
+                    <span class="book-note">{book.note}</span>
+                  )}
+                </>
+              )}
+            </div>
+          </div>
+        </div>
       ))}
     </div>
 
@@ -65,3 +150,213 @@ import { books } from '../data/books';
     </div>
   </section>
 </Layout>
+
+<style>
+  /* ── Book list ── */
+  .book-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .book-card {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 40px;
+    align-items: start;
+    padding: 40px 0;
+  }
+  .book-card + .book-card {
+    border-top: 1px solid var(--border);
+  }
+  .book-card--coming-soon {
+    opacity: 0.75;
+  }
+
+  /* ── Cover ── */
+  .book-cover-wrap {
+    position: relative;
+  }
+  .book-cover-img {
+    width: 160px;
+    height: 160px;
+    object-fit: cover;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    display: block;
+  }
+  .book-cover-placeholder {
+    width: 160px;
+    height: 160px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    gap: 8px;
+  }
+  .book-cover-placeholder-title {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--green);
+    text-align: center;
+    line-height: 1.4;
+  }
+  .book-cover-placeholder-sub {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: var(--text-dim);
+    text-align: center;
+    line-height: 1.4;
+  }
+  .book-badge {
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    background: var(--green);
+    color: var(--bg);
+    font-family: var(--font-mono);
+    font-size: 9px;
+    font-weight: 700;
+    padding: 3px 7px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+  }
+
+  /* ── Meta ── */
+  .book-tags {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+  }
+  .book-tag {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .book-tag-sep {
+    color: var(--border-hover);
+    font-size: 10px;
+  }
+  .book-title {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    margin-bottom: 2px;
+  }
+  .book-subtitle {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+    font-style: italic;
+  }
+  .book-hook {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--green);
+    font-style: italic;
+    margin-bottom: 14px;
+    margin-top: 6px;
+  }
+  .book-desc {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.75;
+    margin-bottom: 20px;
+  }
+  .book-desc strong {
+    color: var(--text);
+    font-weight: 500;
+  }
+  .book-testimonial {
+    border-left: 2px solid var(--border);
+    padding: 6px 0 6px 16px;
+    margin-bottom: 20px;
+  }
+  .book-testimonial p {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-style: italic;
+    line-height: 1.6;
+    margin-bottom: 4px;
+  }
+  .book-testimonial cite {
+    font-size: 11px;
+    color: var(--text-dim);
+    font-style: normal;
+  }
+
+  /* ── Buy links ── */
+  .book-links {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .btn-book-primary {
+    font-size: 12px;
+    font-weight: 600;
+    background: var(--text);
+    color: var(--bg);
+    padding: 7px 16px;
+    border-radius: var(--radius);
+    text-decoration: none;
+    transition: background var(--transition);
+  }
+  .btn-book-primary:hover {
+    background: var(--green);
+  }
+  .btn-book-primary:focus-visible {
+    outline: 2px solid var(--green);
+    outline-offset: 2px;
+  }
+  .btn-book-secondary {
+    font-size: 12px;
+    color: var(--text-muted);
+    padding: 7px 12px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    text-decoration: none;
+    transition: border-color var(--transition), color var(--transition);
+  }
+  .btn-book-secondary:hover {
+    color: var(--text);
+    border-color: var(--border-hover);
+  }
+  .btn-book-secondary:focus-visible {
+    outline: 2px solid var(--green);
+    outline-offset: 2px;
+  }
+  .book-note {
+    font-size: 11px;
+    color: var(--text-dim);
+    font-family: var(--font-mono);
+    margin-left: 4px;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 640px) {
+    .book-card {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    .book-cover-wrap {
+      margin: 0 auto;
+    }
+    .book-cover-img,
+    .book-cover-placeholder {
+      width: 120px;
+      height: 120px;
+    }
+  }
+</style>
