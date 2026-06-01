@@ -46,11 +46,11 @@ const regularBooks = books.filter(b => !b.isFeatured);
               <span class="terminal-dot terminal-dot--green"></span>
             </div>
             <div class="terminal-body">
-              <p class="terminal-line"><span class="t-cmd">$ cat the-support-machine</span></p>
+              <p class="terminal-line"><span class="t-cmd">$ cat {featuredBook.title.toLowerCase().replace(/\s+/g, '-')}</span></p>
               <p class="terminal-line t-dim">───────────────────</p>
-              <p class="terminal-line"><span class="t-key">title:    </span><span class="t-val">The Support Machine</span></p>
+              <p class="terminal-line"><span class="t-key">title:    </span><span class="t-val">{featuredBook.title}</span></p>
               <p class="terminal-line"><span class="t-key">type:     </span><span class="t-val">book + AI skill</span></p>
-              <p class="terminal-line"><span class="t-key">templates:</span><span class="t-val">6 included</span></p>
+              <p class="terminal-line"><span class="t-key">templates:</span><span class="t-val">{featuredBook.templates?.length ?? 0} included</span></p>
               <p class="terminal-line"><span class="t-key">license:  </span><span class="t-val">MIT + CC 4.0</span></p>
               <p class="terminal-line"><span class="t-key">price:    </span><span class="t-val">$0.00</span></p>
               <p class="terminal-line t-dim">───────────────────</p>
@@ -81,7 +81,8 @@ const regularBooks = books.filter(b => !b.isFeatured);
               <p class="featured-thesis">{featuredBook.thesis}</p>
             )}
 
-            <p class="featured-desc">{featuredBook.description}</p>
+            {/* set:html is intentional — featuredBook.description is static data in books.ts that may contain <strong> tags. Never source from user input or CMS without sanitization. */}
+            <p class="featured-desc" set:html={featuredBook.description} />
 
             {featuredBook.templates && featuredBook.templates.length > 0 && (
               <div class="featured-pills">
@@ -237,7 +238,7 @@ const regularBooks = books.filter(b => !b.isFeatured);
   /* ── Featured card ── */
   .book-featured {
     background: var(--bg-card);
-    border: 1px solid rgba(34, 197, 94, 0.2);
+    border: 1px solid var(--green-dim);
     border-radius: var(--radius-lg);
     padding: 40px;
     display: grid;
@@ -301,6 +302,9 @@ const regularBooks = books.filter(b => !b.isFeatured);
     animation: blink 1s step-end infinite;
   }
   @keyframes blink { 50% { opacity: 0; } }
+  @media (prefers-reduced-motion: reduce) {
+    .terminal-cursor { animation: none; }
+  }
   .featured-tags {
     display: flex;
     align-items: center;
@@ -317,9 +321,9 @@ const regularBooks = books.filter(b => !b.isFeatured);
   }
   .featured-tag-sep { color: var(--border-hover); font-size: 10px; }
   .featured-badge {
-    background: rgba(34, 197, 94, 0.1);
+    background: var(--green-dim);
     color: var(--green);
-    border: 1px solid rgba(34, 197, 94, 0.2);
+    border: 1px solid var(--green-dim);
     font-family: var(--font-mono);
     font-size: 9px;
     font-weight: 700;
